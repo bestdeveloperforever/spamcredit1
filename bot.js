@@ -9,7 +9,22 @@ client.channels.get("483355188954923041").send(`${ReBeL[Math.floor(Math.random()
 },500);
 });
 
+const prefix = 's';
 
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+  if (command == "ay") {
+   message.channel.sendMessage(args.join("  "))
+   message.delete()
+  }
+ });
 
 
 
